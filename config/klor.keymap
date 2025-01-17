@@ -113,10 +113,10 @@
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
             bindings = <
-               &kp Q  &kp W  &kp F           &kp P        &kp B                                &kp J    &kp L        &kp U      &kp Y    &kp MINUS
-&hm LSHFT TAB  &kp A  &kp R  &kp S           &hm LSHFT T  &kp G                                &kp H    &hm RSHFT N  &kp E      &kp I    &kp O      &kp SQT
-&kp LCTRL      &kp Z  &kp X  &kp C           &kp D        &kp V          &kp C_MUTE  &kp K_PP  &kp K    &kp H        &kp COMMA  &kp DOT  &kp FSLH   &kp BSLH
-                             &kp LEFT_SHIFT  &kp SPACE    &mt RCTRL TAB  &kp SPACE   &kp BSPC  &kp RET  &mo 2        &kp DEL
+               &kp Q  &kp W  &kp F           &kp P        &kp B                                &kp J               &kp L        &kp U                      &kp Y    &kp MINUS
+&hm LSHFT TAB  &kp A  &kp R  &kp S           &hm LSHFT T  &kp G                                &kp H               &hm RSHFT N  &kp E                      &kp I    &kp O      &kp SQT
+&kp LCTRL      &kp Z  &kp X  &kp C           &kp D        &kp V          &kp C_MUTE  &kp K_PP  &kp K               &kp H        &kp COMMA                  &kp DOT  &kp FSLH   &kp BSLH
+                             &kp LEFT_SHIFT  &kp SPACE    &mt RCTRL TAB  &kp SPACE   &kp BSPC  &mt LEFT_GUI ENTER  &mo 1        &mt LEFT_SHIFT LEFT_SHIFT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_AC_FORWARD C_AC_BACK>;
@@ -139,10 +139,10 @@
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
             bindings = <
-           &kp F1    &kp F2  &kp F3     &kp F4    &kp F5                           &kp F6     &kp F7    &kp F8     &kp F9     &kp F10
-&kp MINUS  &kp EXCL  &kp AT  &kp POUND  &kp DLLR  &kp PRCNT                        &kp CARET  &kp AMPS  &kp GRAVE  &kp TILDE  &kp EQUAL  &kp KP_PLUS
-&kp UNDER  &kp N1    &kp N2  &kp N3     &kp N4    &kp N5     &kp C_MUTE  &kp K_PP  &kp N6     &kp N7    &kp N8     &kp N9     &kp N0     &kp KP_MULTIPLY
-                             &trans     &trans    &trans     &mo 0       &mo 0     &trans     &trans    &trans
+           &kp NON_US_BACKSLASH  &kp LPAR          &kp RIGHT_PARENTHESIS  &kp SQT       &kp SEMICOLON                        &kp PERCENT  &kp EQUAL     &kp ASTERISK  &kp PLUS      &trans
+&kp TAB    &kp NUMBER_1          &kp NUMBER_2      &kp NUMBER_3           &kp NUMBER_4  &trans                               &kp CARET    &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp N9  &kp DEL
+&kp RCTRL  &kp SQT               &kp LEFT_BRACKET  &kp RIGHT_BRACKET      &kp N5        &trans         &kp C_MUTE  &kp K_PP  &kp BSLH     &kp N0        &trans        &trans        &trans  &kp KP_MULTIPLY
+                                                   &trans                 &trans        &trans         &mo 0       &mo 0     &trans       &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
@@ -165,9 +165,9 @@
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
             bindings = <
-                 &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &trans  &trans  &kp LBRC                        &kp RBRC  &kp LEFT  &kp UP    &kp RIGHT  &kp HOME
-&rgb_ug RGB_BRI  &rgb_ug RGB_EFF  &trans           &trans  &trans  &kp LBKT                        &kp RBKT  &trans    &kp DOWN  &trans     &kp PSCRN  &kp PG_UP
-&rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &trans  &trans  &kp LPAR  &kp C_MUTE  &kp K_PP  &kp RPAR  &trans    &trans    &trans     &kp END    &kp PG_DN
+                 &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &trans  &trans  &kp LBRC                        &kp RBRC  &kp LEFT  &kp UP  &kp RIGHT  &kp HOME
+&rgb_ug RGB_BRI  &rgb_ug RGB_EFF  &trans           &trans  &trans  &kp LBKT                        &kp RBKT  &kp DOWN  &kp UP  &kp RIGHT  &kp PSCRN  &kp PG_UP
+&rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &trans  &trans  &kp LPAR  &kp C_MUTE  &kp K_PP  &kp RPAR  &kp LEFT  &trans  &trans     &kp END    &kp PG_DN
                                                    &trans  &trans  &trans    &mo 0       &mo 0     &trans    &trans    &mo 3
             >;
 
