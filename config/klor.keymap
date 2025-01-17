@@ -15,7 +15,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define BASE   0
 #define RAISE  1
@@ -139,36 +139,10 @@
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
             bindings = <
-           &kp NON_US_BACKSLASH  &kp LPAR          &kp RIGHT_PARENTHESIS  &kp SQT       &kp SEMICOLON                        &kp PERCENT  &kp EQUAL     &kp ASTERISK  &kp PLUS      &trans
-&kp TAB    &kp NUMBER_1          &kp NUMBER_2      &kp NUMBER_3           &kp NUMBER_4  &trans                               &kp CARET    &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp N9  &kp DEL
-&kp RCTRL  &kp SQT               &kp LEFT_BRACKET  &kp RIGHT_BRACKET      &kp N5        &trans         &kp C_MUTE  &kp K_PP  &kp BSLH     &kp N0        &trans        &trans        &trans  &kp KP_MULTIPLY
-                                                   &trans                 &trans        &trans         &mo 0       &mo 0     &trans       &trans        &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
-        };
-
-        Func {
-            // ┌───────────────────────────────────────────────────────────┐
-
-            label = "RAISE";
-
-            // └───────────────────────────────────────────────────────────┘
-            /*           ┌─────────┬─────────┬─────────┬─────────┬─────────┐                    ┌─────────┬─────────┬─────────┬─────────┬─────────┐
-             │ RGB_SPI │ RGB_HUI │         │         │    {    │                    │    }    │   LEFT  │   UP    │  RIGHT  │   HOME  │
-   ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-   │ RGB_BRI │ RGB_EFF │         │         │         │    [    │                    │    ]    │         │  DOWN   │         │  PSCRN  │  P UP   │
-   ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤╭────────╮╭────────╮├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-   │ RGB_BRD │ RGB_SPD │ RGB_HUD │         │         │    (    ││  MUTE  ││PLY/PASE││    )    │         │         │         │   END   │ P DOWN  │
-   └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┼╰────────╯╰────────╯┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-                                 │         │         │         │  LSHIFT ││  RSHIFT │         │         │  ADJUST │  
-                                 └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
-
-            bindings = <
-                 &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &trans  &trans  &kp LBRC                        &kp RBRC  &kp LEFT  &kp UP  &kp RIGHT  &kp HOME
-&rgb_ug RGB_BRI  &rgb_ug RGB_EFF  &trans           &trans  &trans  &kp LBKT                        &kp RBKT  &kp DOWN  &kp UP  &kp RIGHT  &kp PSCRN  &kp PG_UP
-&rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &trans  &trans  &kp LPAR  &kp C_MUTE  &kp K_PP  &kp RPAR  &kp LEFT  &trans  &trans     &kp END    &kp PG_DN
-                                                   &trans  &trans  &trans    &mo 0       &mo 0     &trans    &trans    &mo 3
+           &kp NON_US_BACKSLASH  &kp LPAR          &kp RIGHT_PARENTHESIS  &kp N8        &to 0                                &to 2      &kp N9  &kp PERCENT   &kp PLUS  &trans
+&kp TAB    &kp SINGLE_QUOTE      &kp NUMBER_2      &kp NUMBER_3           &kp NUMBER_4  &kp SEMICOLON                        &kp EQUAL  &kp N5  &kp NUMBER_6  &kp N7    &kp ASTERISK  &kp DEL
+&kp RCTRL  &kp SQT               &kp LEFT_BRACKET  &kp RIGHT_BRACKET      &kp NUMBER_1  &trans         &kp C_MUTE  &kp K_PP  &kp BSLH   &kp N0  &trans        &trans    &trans        &kp KP_MULTIPLY
+                                                   &trans                 &trans        &trans         &mo 0       &mo 0     &trans     &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
@@ -191,13 +165,22 @@
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
             bindings = <
-        &bt BT_CLR  &trans  &trans  &trans  &trans                        &trans  &trans  &trans  &trans  &bt BT_CLR
-&trans  &bt BT_NXT  &trans  &trans  &trans  &trans                        &trans  &trans  &trans  &trans  &bt BT_NXT  &trans
-&trans  &bt BT_PRV  &trans  &trans  &trans  &trans  &kp C_MUTE  &kp K_PP  &trans  &trans  &trans  &trans  &bt BT_PRV  &trans
-                            &trans  &trans  &trans  &trans      &trans    &trans  &trans  &trans
+        &bt BT_CLR  &trans  &trans  &trans  &trans                        &to 2   &trans          &trans        &trans  &bt BT_CLR
+&trans  &bt BT_NXT  &trans  &trans  &trans  &trans                        &trans  &mmv MOVE_DOWN  &mmv MOVE_UP  &trans  &bt BT_NXT  &trans
+&trans  &bt BT_PRV  &trans  &trans  &trans  &trans  &kp C_MUTE  &kp K_PP  &trans  &trans          &trans        &trans  &bt BT_PRV  &trans
+                            &trans  &trans  &trans  &trans      &trans    &trans  &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
+        };
+
+        Func {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans                  &kp LG(V)  &kp LC(LEFT)  &kp LC(RIGHT)  &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans     &kp DOWN      &kp UP         &kp RIGHT  &kp DEL       &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp LEFT      &kp PG_UP      &kp PG_DN  &kp LC(FSLH)  &trans
+                        &trans  &trans  &trans  &trans  &trans  &trans     &trans        &trans
+            >;
         };
     };
 };
