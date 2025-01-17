@@ -43,6 +43,23 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        new_behavior: new_behavior {
+            compatible = "zmk,behavior-input-two-axis";
+            label = "NEW_BEHAVIOR";
+            #binding-cells = <1>;
+            x-input-code = <0>;
+            delay-ms = <0>;
+            time-to-max-speed-ms = <10>;
+            y-input-code = <0>;
+        };
+
+        rotation: rotation {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "ROTATION";
+            #sensor-binding-cells = <0>;
+            bindings = <&none>, <&none>;
+        };
     };
 
     combos {
