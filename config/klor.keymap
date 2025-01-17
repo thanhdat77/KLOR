@@ -16,6 +16,8 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define BASE   0
 #define RAISE  1
@@ -48,20 +50,19 @@
 
         combo_esc {
             timeout-ms = <50>;
-            key-positions = <0 1>;
+            key-positions = <1 2>;
             bindings = <&kp ESC>;
         };
 
-        combo_closetab {
+        go0 {
             timeout-ms = <50>;
-            key-positions = <1 2>;
-            bindings = <&macro_closetab>;
+            key-positions = <37 42>;
+            bindings = <&to 0>;
         };
 
-        combo_lasttab {
-            timeout-ms = <50>;
-            key-positions = <2 3>;
-            bindings = <&macro_lasttab>;
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <13 14>;
         };
     };
 
@@ -74,18 +75,6 @@
                 <&kp LCTRL>,
                 <&macro_tap>,
                 <&kp F4>,
-                <&macro_release>,
-                <&kp LCTRL>;
-        };
-
-        macro_lasttab: macro_lasttab {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp LS(T)>,
                 <&macro_release>,
                 <&kp LCTRL>;
         };
@@ -139,10 +128,10 @@
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
             bindings = <
-           &kp NON_US_BACKSLASH  &kp LPAR          &kp RIGHT_PARENTHESIS  &kp N8        &to 0                                &to 2      &kp N9  &kp PERCENT   &kp PLUS  &trans
-&kp TAB    &kp SINGLE_QUOTE      &kp NUMBER_2      &kp NUMBER_3           &kp NUMBER_4  &kp SEMICOLON                        &kp EQUAL  &kp N5  &kp NUMBER_6  &kp N7    &kp ASTERISK  &kp DEL
-&kp RCTRL  &kp SQT               &kp LEFT_BRACKET  &kp RIGHT_BRACKET      &kp NUMBER_1  &trans         &kp C_MUTE  &kp K_PP  &kp BSLH   &kp N0  &trans        &trans    &trans        &kp KP_MULTIPLY
-                                                   &trans                 &trans        &trans         &mo 0       &mo 0     &trans     &trans  &trans
+           &kp SQT  &kp LPAR          &kp RIGHT_PARENTHESIS  &kp N8        &trans                               &kp PERCENT  &kp N9  &kp ASTERISK  &kp PLUS  &trans
+&kp TAB    &mo 2    &kp NUMBER_2      &kp NUMBER_3           &kp NUMBER_4  &kp SEMICOLON                        &kp EQUAL    &kp N5  &kp NUMBER_6  &kp N7    &mo 3   &kp DEL
+&kp RCTRL  &kp SQT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET      &kp NUMBER_1  &trans         &kp C_MUTE  &kp K_PP  &kp BSLH     &kp N0  &trans        &trans    &trans  &kp KP_MULTIPLY
+                                      &trans                 &trans        &trans         &mo 0       &mo 0     &trans       &to 2   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
@@ -165,10 +154,10 @@
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
             bindings = <
-        &bt BT_CLR  &trans  &trans  &trans  &trans                        &to 2   &trans          &trans        &trans  &bt BT_CLR
-&trans  &bt BT_NXT  &trans  &trans  &trans  &trans                        &trans  &mmv MOVE_DOWN  &mmv MOVE_UP  &trans  &bt BT_NXT  &trans
-&trans  &bt BT_PRV  &trans  &trans  &trans  &trans  &kp C_MUTE  &kp K_PP  &trans  &trans          &trans        &trans  &bt BT_PRV  &trans
-                            &trans  &trans  &trans  &trans      &trans    &trans  &trans          &trans
+        &bt BT_CLR  &trans  &trans  &trans    &trans                        &to 2   &msc SCRL_DOWN  &msc SCRL_UP  &trans           &bt BT_CLR
+&trans  &bt BT_NXT  &trans  &trans  &mkp MB1  &trans                        &trans  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &to 2       &trans
+&trans  &bt BT_PRV  &trans  &trans  &mkp MB2  &trans  &kp C_MUTE  &kp K_PP  &trans  &mmv MOVE_LEFT  &msc SCRL_UP  &trans           &bt BT_PRV  &trans
+                            &trans  &trans    &trans  &trans      &trans    &trans  &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
@@ -177,7 +166,7 @@
         Func {
             bindings = <
         &trans  &trans  &trans  &trans  &trans                  &kp LG(V)  &kp LC(LEFT)  &kp LC(RIGHT)  &trans     &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans     &kp DOWN      &kp UP         &kp RIGHT  &kp DEL       &trans
+&trans  &to 3   &trans  &trans  &trans  &trans                  &trans     &kp DOWN      &kp UP         &kp RIGHT  &to 3         &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp LEFT      &kp PG_UP      &kp PG_DN  &kp LC(FSLH)  &trans
                         &trans  &trans  &trans  &trans  &trans  &trans     &trans        &trans
             >;
