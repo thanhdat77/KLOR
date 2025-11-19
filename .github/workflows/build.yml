@@ -5,7 +5,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/qmk/qmk_cli
     steps:
       - name: Checkout QMK firmware
         uses: actions/checkout@v4
@@ -21,7 +20,12 @@ jobs:
       - name: Copy keyboard files to QMK
         run: |
           cp -r temp-keyboard-files/FIRMWARE/qmk_rp2040/electronlab keyboards/
-          ls -la keyboards/electronlab/klor/
+      
+      - name: Install QMK
+        run: |
+          python3 -m pip install qmk
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi
       
       - name: Build firmware
         run: |
