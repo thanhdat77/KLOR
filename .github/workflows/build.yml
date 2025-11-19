@@ -1,66 +1,34 @@
 name: Build QMK Firmware
-
 on:
   push:
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout QMK firmware
         uses: actions/checkout@v4
         with:
           repository: qmk/qmk_firmware
           submodules: recursive
-          
+      
+      - name: Checkout your keyboard files
+        uses: actions/checkout@v4
+        with:
+          path: temp-keyboard-files
+      
+      - name: Copy keyboard files to QMK
+        run: |
+          cp -r temp-keyboard-files/FIRMWARE/qmk_rp2040/electronlab keyboards/
+          ls -la keyboards/electronlab/klor/
+      
       - name: Build firmware
         run: |
           python3 -m pip install qmk
-          qmk compile -kb klor/polydactyl -km default
-          
+          qmk compile -kb electronlab/klor -km default
+      
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
           name: klor-polydactyl-firmware
           path: "*.uf2"
-name: Build QMK Firmware
-
-on:
-  push:
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout your KLOR repo
-        uses: actions/checkout@v4
-        with:
-          path: klor-repo
-        
-      - name: Checkout QMK firmware
-        uses: actions/checkout@v4
-        with:
-          repository: qmk/qmk_firmware
-          submodules: recursive
-          path: qmk_firmware
-          
-      - name: Copy KLOR files to QMK
-        run: |
-          # Copy KLOR keyboard folder to QMK
-          cp -r klor-repo/firmware/qmk/klor qmk_firmware/keyboards/
-          
-      - name: Build firmware
-        run: |
-          cd qmk_firmware
-          python3 -m pip install qmk
-          qmk compile -kb klor -km default
-          
-      - name: Upload firmware
-        uses: actions/upload-artifact@v4
-        with:
-          name: klor-polydactyl-firmware
-          path: qmk_firmware/*.uf2
